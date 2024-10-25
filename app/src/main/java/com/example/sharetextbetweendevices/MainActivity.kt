@@ -2,8 +2,7 @@ package com.example.sharetextbetweendevices
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
+import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -17,6 +16,8 @@ class MainActivity : ComponentActivity() {
     private lateinit var databaseReference: DatabaseReference
 
     private lateinit var listView: LinearLayout
+    private lateinit var inputEditText: EditText
+    private lateinit var addButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,20 +28,16 @@ class MainActivity : ComponentActivity() {
         databaseReference = database.getReference("strings")
 
         listView = findViewById(R.id.string_list)
+        inputEditText = findViewById(R.id.input_edit_text)
+        addButton = findViewById(R.id.add_button)
 
-        val inputEditText = findViewById<EditText>(R.id.input_edit_text)
-
-        inputEditText.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-            override fun afterTextChanged(s: Editable?) {
-                if (s.toString().isNotEmpty()) {
-                    databaseReference.push().setValue(s.toString())
-                }
+        addButton.setOnClickListener {
+            val inputText = inputEditText.text.toString()
+            if (inputText.isNotEmpty()) {
+                databaseReference.push().setValue(inputText)
+                inputEditText.text.clear()
             }
-        })
+        }
 
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot)
