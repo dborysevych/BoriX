@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "265845194664",
+    "project_id": "sharedtextbetweendevices-401c2",
+    "storage_bucket": "sharedtextbetweendevices-401c2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:265845194664:android:b4dd788ca96edda4f7279d",
+        "android_client_info": {
+          "package_name": "com.example.sharetextbetweendevices"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFmBaS3FXtqeVBNGfZWJowSvPej0btIrQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
