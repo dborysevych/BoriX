@@ -8,6 +8,8 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.ComponentActivity
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import com.example.sharetextbetweendevices.R
 import com.google.firebase.database.*
 
@@ -19,11 +21,12 @@ class StoreListActivity : ComponentActivity() {
     private lateinit var listView: LinearLayout
     private lateinit var inputEditText: EditText
     private lateinit var addButton: Button
+    private lateinit var deleteButton: Button
+    private val selectedItems = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.store_list_activity)
-
 
         database = FirebaseDatabase.getInstance()
         databaseReference = database.getReference("strings")
@@ -31,6 +34,7 @@ class StoreListActivity : ComponentActivity() {
         listView = findViewById(R.id.string_list)
         inputEditText = findViewById(R.id.input_edit_text)
         addButton = findViewById(R.id.add_button)
+        deleteButton = findViewById(R.id.delete_button)
 
         addButton.setOnClickListener {
             val inputText = inputEditText.text.toString()
@@ -40,10 +44,19 @@ class StoreListActivity : ComponentActivity() {
             }
         }
 
+        deleteButton.setOnClickListener {
+            if (selectedItems.isNotEmpty()) {
+                for (key in selectedItems) {
+                    databaseReference.child(key).removeValue()
+                }
+                selectedItems.clear()
+            }
+        }
+
         databaseReference.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot)
-            {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
                 listView.removeAllViews()
+                selectedItems.clear()
 
                 for (snapshot in dataSnapshot.children) {
                     val string = snapshot.getValue(String::class.java) ?: ""
@@ -54,9 +67,14 @@ class StoreListActivity : ComponentActivity() {
                     val checkBox = itemLayout.findViewById<CheckBox>(R.id.delete_checkbox)
 
                     textView.text = string
+
                     checkBox.setOnCheckedChangeListener { _, isChecked ->
                         if (isChecked) {
-                            databaseReference.child(key).removeValue()
+                            selectedItems.add(key)
+                            textView.setTextColor(Color.Green.toArgb())
+                        } else {
+                            selectedItems.remove(key)
+                            textView.setTextColor(Color.White.toArgb())
                         }
                     }
 
