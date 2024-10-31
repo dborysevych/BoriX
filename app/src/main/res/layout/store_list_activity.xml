@@ -17,7 +17,7 @@
         android:elevation="4dp">
 
         <EditText
-            android:id="@+id/input_edit_text"
+            android:id="@+id/store_input_edit_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -27,7 +27,7 @@
             android:backgroundTint="#4DFFFFFF" />
 
         <Button
-            android:id="@+id/add_button"
+            android:id="@+id/store_add_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Додати"
@@ -48,7 +48,7 @@
         android:layout_marginTop="16dp" />
 
     <LinearLayout
-        android:id="@+id/string_list"
+        android:id="@+id/store_string_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -56,7 +56,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/delete_button"
+        android:id="@+id/store_delete_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Купити"

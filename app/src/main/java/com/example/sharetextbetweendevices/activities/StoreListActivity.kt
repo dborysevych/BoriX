@@ -29,12 +29,12 @@ class StoreListActivity : ComponentActivity() {
         setContentView(R.layout.store_list_activity)
 
         database = FirebaseDatabase.getInstance()
-        databaseReference = database.getReference("strings")
+        databaseReference = database.getReference("store_list")
 
-        listView = findViewById(R.id.string_list)
-        inputEditText = findViewById(R.id.input_edit_text)
-        addButton = findViewById(R.id.add_button)
-        deleteButton = findViewById(R.id.delete_button)
+        listView = findViewById(R.id.store_string_list)
+        inputEditText = findViewById(R.id.store_input_edit_text)
+        addButton = findViewById(R.id.store_add_button)
+        deleteButton = findViewById(R.id.store_delete_button)
 
         addButton.setOnClickListener {
             val inputText = inputEditText.text.toString()
@@ -62,9 +62,9 @@ class StoreListActivity : ComponentActivity() {
                     val string = snapshot.getValue(String::class.java) ?: ""
                     val key = snapshot.key ?: ""
 
-                    val itemLayout = layoutInflater.inflate(R.layout.list_item, listView, false)
-                    val textView = itemLayout.findViewById<TextView>(R.id.string_text)
-                    val checkBox = itemLayout.findViewById<CheckBox>(R.id.delete_checkbox)
+                    val itemLayout = layoutInflater.inflate(R.layout.store_list_item, listView, false)
+                    val textView = itemLayout.findViewById<TextView>(R.id.store_string_text)
+                    val checkBox = itemLayout.findViewById<CheckBox>(R.id.store_delete_checkbox)
 
                     textView.text = string
 
