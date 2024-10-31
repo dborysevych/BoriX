@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.cardview.widget.CardView
+import com.example.sharetextbetweendevices.activities.DenxiikBankActivity
 import com.example.sharetextbetweendevices.activities.StoreListActivity
 
 class MainActivity : ComponentActivity() {
@@ -20,7 +21,7 @@ class MainActivity : ComponentActivity() {
 
         val denxiikBankPreview = findViewById<CardView>(R.id.denxiik_bank_preview)
         denxiikBankPreview.setOnClickListener {
-            val intent = Intent(this, StoreListActivity::class.java)
+            val intent = Intent(this, DenxiikBankActivity::class.java)
             startActivity(intent)
         }
     }
