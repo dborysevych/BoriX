@@ -47,20 +47,45 @@
         android:gravity="center"
         android:layout_marginTop="16dp" />
 
+    <ScrollView
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent">
+
+        <LinearLayout
+            android:id="@+id/store_string_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp">
+        </LinearLayout>
+    </ScrollView>
+
+
     <LinearLayout
-        android:id="@+id/store_string_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="16dp">
-    </LinearLayout>
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/store_delete_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Купити"
-        android:backgroundTint="@color/accent"
-        android:textColor="#FFFFFF" />
+        <Button
+            android:id="@+id/store_delete_all_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Купити все"
+            android:backgroundTint="@color/accent"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/store_delete_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Купити"
+            android:backgroundTint="@color/accent"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
 
 </LinearLayout>

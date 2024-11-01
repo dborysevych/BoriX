@@ -22,6 +22,7 @@ class StoreListActivity : ComponentActivity() {
     private lateinit var inputEditText: EditText
     private lateinit var addButton: Button
     private lateinit var deleteButton: Button
+    private lateinit var deleteAllButton: Button
     private val selectedItems = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +36,7 @@ class StoreListActivity : ComponentActivity() {
         inputEditText = findViewById(R.id.store_input_edit_text)
         addButton = findViewById(R.id.store_add_button)
         deleteButton = findViewById(R.id.store_delete_button)
+        deleteAllButton = findViewById(R.id.store_delete_all_button)
 
         addButton.setOnClickListener {
             val inputText = inputEditText.text.toString()
@@ -51,6 +53,10 @@ class StoreListActivity : ComponentActivity() {
                 }
                 selectedItems.clear()
             }
+        }
+
+        deleteAllButton.setOnClickListener {
+            databaseReference.removeValue()
         }
 
         databaseReference.addValueEventListener(object : ValueEventListener {
