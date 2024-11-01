@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Choose an Activity"
+        android:text="BoriX"
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center" />
@@ -44,7 +44,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Store List"
+                    android:text="Магазин"
                     android:textSize="18sp"
                     android:gravity="center_horizontal"
                     android:layout_marginTop="8dp" />

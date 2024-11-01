@@ -7,22 +7,26 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.ComponentActivity
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import com.example.sharetextbetweendevices.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.text.SimpleDateFormat
 
 class DenxiikBankActivity : ComponentActivity() {
     private lateinit var database: FirebaseDatabase
     private lateinit var databaseReference: DatabaseReference
+    private lateinit var databaseTotalReference: DatabaseReference
 
     private lateinit var listView: LinearLayout
     private lateinit var inputEditText: EditText
     private lateinit var addButton: Button
     private lateinit var subtractButton: Button
-    private var sum = 0 // Variable to store the running total
+    private var total_sum = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +34,7 @@ class DenxiikBankActivity : ComponentActivity() {
 
         database = FirebaseDatabase.getInstance()
         databaseReference = database.getReference("bank_list")
+        databaseTotalReference = database.getReference("total_sum")
 
         listView = findViewById(R.id.bank_string_list)
         inputEditText = findViewById(R.id.bank_input_edit_text)
@@ -41,9 +46,10 @@ class DenxiikBankActivity : ComponentActivity() {
             val inputText = inputEditText.text.toString()
             if (inputText.isNotEmpty() && isNumeric(inputText)) {
                 val value = inputText.toInt()
-                databaseReference.push().setValue(value)
-                sum += value
-                updateListAndSum() // Call to update list and sum
+                val date = SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(System.currentTimeMillis())
+                val item = hashMapOf("value" to value, "date" to date)
+                databaseReference.push().setValue(item)
+                databaseTotalReference.setValue(total_sum + value)
                 inputEditText.text.clear()
             }
         }
@@ -51,28 +57,58 @@ class DenxiikBankActivity : ComponentActivity() {
         subtractButton.setOnClickListener {
             val inputText = inputEditText.text.toString()
             if (inputText.isNotEmpty() && isNumeric(inputText)) {
-                val value = -inputText.toInt() // Convert to negative for subtraction
-                databaseReference.push().setValue(value)
-                sum += value
-                updateListAndSum()
+                val value = -inputText.toInt()
+                val date = SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(System.currentTimeMillis())
+                val item = hashMapOf("value" to value, "date" to date)
+                databaseReference.push().setValue(item)
+                databaseTotalReference.setValue(total_sum + value)
                 inputEditText.text.clear()
             }
         }
 
         databaseReference.addValueEventListener(object : ValueEventListener {
+            @SuppressLint("SetTextI18n")
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 listView.removeAllViews()
 
+
                 for (snapshot in dataSnapshot.children) {
-                    val value = snapshot.getValue(Int::class.java) ?: 0
+                    val value = snapshot.child("value").getValue(Int::class.java) ?: 0
+                    val dateAdded = snapshot.child("date").getValue(String::class.java) ?: "N/A"
 
                     val itemLayout = layoutInflater.inflate(R.layout.bank_list_item, listView, false)
-                    val textView = itemLayout.findViewById<TextView>(R.id.bank_string_amount)
+                    val textViewValue = itemLayout.findViewById<TextView>(R.id.bank_string_amount)
+                    val textViewDate = itemLayout.findViewById<TextView>(R.id.bank_string_date) // Add a TextView for date
 
-                    textView.text = if (value > 0) "+$value" else "$value"
+                    if (value < 0) {
+                        textViewValue.text = "$value"
+                        textViewValue.setTextColor(Color.Red.toArgb())
+                    } else {
+                        textViewValue.text = "+$value"
+                        textViewValue.setTextColor(Color.Green.toArgb())
+                    }
+                    textViewDate.text = dateAdded
 
                     listView.addView(itemLayout)
                 }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle errors
+            }
+        })
+
+        // Listen for changes in total_sum
+        databaseTotalReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                total_sum = dataSnapshot.getValue(Int::class.java) ?: 0
+                val sumTextView = findViewById<TextView>(R.id.bank_total_sum)
+                if (total_sum < 0) {
+                    sumTextView.setTextColor(Color.Red.toArgb())
+                } else {
+                    sumTextView.setTextColor(Color.Green.toArgb())
+                }
+                sumTextView.text = "Total: $total_sum"
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
@@ -84,11 +120,5 @@ class DenxiikBankActivity : ComponentActivity() {
     // Function to check if input is a valid number
     private fun isNumeric(str: String): Boolean {
         return str.matches("[-+]?[0-9]+".toRegex())
-    }
-
-    // Function to update list and sum display
-    private fun updateListAndSum() {
-        val sumTextView = findViewById<TextView>(R.id.bank_total_sum)
-        sumTextView.text = "Total: $sum"
     }
 }
