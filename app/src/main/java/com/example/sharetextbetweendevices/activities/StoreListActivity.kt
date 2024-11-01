@@ -30,7 +30,7 @@ class StoreListActivity : ComponentActivity() {
         setContentView(R.layout.store_list_activity)
 
         database = FirebaseDatabase.getInstance()
-        databaseReference = database.getReference("store_list")
+        databaseReference = database.getReference("boriX/store_list")
 
         listView = findViewById(R.id.store_string_list)
         inputEditText = findViewById(R.id.store_input_edit_text)

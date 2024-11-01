@@ -33,8 +33,8 @@ class DenxiikBankActivity : ComponentActivity() {
         setContentView(R.layout.bank_list_activity)
 
         database = FirebaseDatabase.getInstance()
-        databaseReference = database.getReference("bank_list")
-        databaseTotalReference = database.getReference("total_sum")
+        databaseReference = database.getReference("boriX/bank_list")
+        databaseTotalReference = database.getReference("boriX/total_sum")
 
         listView = findViewById(R.id.bank_string_list)
         inputEditText = findViewById(R.id.bank_input_edit_text)
