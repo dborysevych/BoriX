@@ -108,7 +108,7 @@ class DenxiikBankActivity : ComponentActivity() {
                 } else {
                     sumTextView.setTextColor(Color.Green.toArgb())
                 }
-                sumTextView.text = "Total: $total_sum"
+                sumTextView.text = "Всього: $total_sum"
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
