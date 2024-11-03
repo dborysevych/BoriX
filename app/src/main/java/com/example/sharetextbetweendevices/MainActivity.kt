@@ -5,18 +5,23 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.cardview.widget.CardView
 import com.example.sharetextbetweendevices.activities.DenxiikBankActivity
+import com.example.sharetextbetweendevices.activities.PrivateTaskListActivity
 import com.example.sharetextbetweendevices.activities.StoreListActivity
 import com.example.sharetextbetweendevices.activities.TaskListActivity
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+
+const val family = "boriX"
 
 class MainActivity : ComponentActivity() {
-    private  var database: FirebaseDatabase = FirebaseDatabase.getInstance()
-    private  var databaseReference: DatabaseReference = database.getReference("errors")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
+
+        val privateTaskListPreview = findViewById<CardView>(R.id.private_task_list_preview)
+        privateTaskListPreview.setOnClickListener {
+            val intent = Intent(this, PrivateTaskListActivity::class.java)
+            startActivity(intent)
+        }
 
         val storeListPreview = findViewById<CardView>(R.id.store_list_preview)
         storeListPreview.setOnClickListener {
@@ -32,12 +37,8 @@ class MainActivity : ComponentActivity() {
 
         val taskListPreview = findViewById<CardView>(R.id.task_list_preview)
         taskListPreview.setOnClickListener {
-            try {
-                val intent = Intent(this, TaskListActivity::class.java)
-                startActivity(intent)
-            } catch (e: Exception) {
-                databaseReference.child("error").setValue(e.toString())
-            }
+            val intent = Intent(this, TaskListActivity::class.java)
+            startActivity(intent)
         }
     }
 }

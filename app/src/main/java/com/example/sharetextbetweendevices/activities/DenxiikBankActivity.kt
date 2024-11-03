@@ -10,6 +10,7 @@ import androidx.activity.ComponentActivity
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import com.example.sharetextbetweendevices.R
+import com.example.sharetextbetweendevices.family
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -33,8 +34,8 @@ class DenxiikBankActivity : ComponentActivity() {
         setContentView(R.layout.bank_list_activity)
 
         database = FirebaseDatabase.getInstance()
-        databaseReference = database.getReference("boriX/bank_list")
-        databaseTotalReference = database.getReference("boriX/total_sum")
+        databaseReference = database.getReference("$family/bank_list")
+        databaseTotalReference = database.getReference("$family/total_sum")
 
         listView = findViewById(R.id.bank_string_list)
         inputEditText = findViewById(R.id.bank_input_edit_text)
@@ -78,7 +79,7 @@ class DenxiikBankActivity : ComponentActivity() {
 
                     val itemLayout = layoutInflater.inflate(R.layout.bank_list_item, listView, false)
                     val textViewValue = itemLayout.findViewById<TextView>(R.id.bank_string_amount)
-                    val textViewDate = itemLayout.findViewById<TextView>(R.id.bank_string_date) // Add a TextView for date
+                    val textViewDate = itemLayout.findViewById<TextView>(R.id.bank_string_date)
 
                     if (value < 0) {
                         textViewValue.text = "$value"

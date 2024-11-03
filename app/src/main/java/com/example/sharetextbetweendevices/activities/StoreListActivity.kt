@@ -11,6 +11,7 @@ import androidx.activity.ComponentActivity
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import com.example.sharetextbetweendevices.R
+import com.example.sharetextbetweendevices.family
 import com.google.firebase.database.*
 
 class StoreListActivity : ComponentActivity() {
@@ -30,7 +31,7 @@ class StoreListActivity : ComponentActivity() {
         setContentView(R.layout.store_list_activity)
 
         database = FirebaseDatabase.getInstance()
-        databaseReference = database.getReference("boriX/store_list")
+        databaseReference = database.getReference("$family/store_list")
 
         listView = findViewById(R.id.store_string_list)
         inputEditText = findViewById(R.id.store_input_edit_text)

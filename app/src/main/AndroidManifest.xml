@@ -23,6 +23,12 @@
         </activity>
 
         <activity
+            android:name=".activities.PrivateTaskListActivity"
+            android:exported="true"
+            android:theme="@style/Theme.ShareTextBetweenDevices">
+        </activity>
+
+        <activity
             android:name=".activities.StoreListActivity"
             android:exported="true"
             android:theme="@style/Theme.ShareTextBetweenDevices">
