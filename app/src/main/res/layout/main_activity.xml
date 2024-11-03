@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="BoriX"
+        android:text="@string/family"
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center" />
@@ -50,7 +50,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Мої завдання"
+                    android:text="@string/myTasks"
                     android:textSize="18sp"
                     android:gravity="center_horizontal"
                     android:layout_marginTop="8dp" />
@@ -79,7 +79,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Магазин"
+                    android:text="@string/store"
                     android:textSize="18sp"
                     android:gravity="center_horizontal"
                     android:layout_marginTop="8dp" />
@@ -108,7 +108,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Denxiik Bank"
+                    android:text="@string/bank"
                     android:textSize="18sp"
                     android:gravity="center_horizontal"
                     android:layout_marginTop="8dp" />
@@ -137,7 +137,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Завдання"
+                    android:text="@string/tasks"
                     android:textSize="18sp"
                     android:gravity="center_horizontal"
                     android:layout_marginTop="8dp" />

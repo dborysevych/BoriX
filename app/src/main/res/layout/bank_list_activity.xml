@@ -20,7 +20,7 @@
             android:id="@+id/bank_add_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Віддати"
+            android:text="@string/returning"
             android:backgroundTint="@color/accent"
             android:textColor="#FFFFFF" />
 
@@ -29,7 +29,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Кількість"
+            android:hint="@string/cuantity"
             android:textColorHint="#80FFFFFF"
             android:textColor="#FFFFFF"
             android:backgroundTint="#4DFFFFFF" />
@@ -38,7 +38,7 @@
             android:id="@+id/bank_subtract_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Взяти"
+            android:text="@string/get"
             android:backgroundTint="@color/accent"
             android:textColor="#FFFFFF" />
 
@@ -48,7 +48,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Iсторія"
+        android:text="@string/history"
         android:textSize="24sp"
         android:textColor="@color/primary_text"
         android:textStyle="bold"
@@ -74,7 +74,7 @@
         android:id="@+id/bank_total_sum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Всього"
+        android:text="@string/total"
         android:textSize="24sp"
         android:textColor="@color/primary_text"
         android:textStyle="bold"

@@ -14,7 +14,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="BoriX"
+            android:label="@string/family"
             android:theme="@style/Theme.ShareTextBetweenDevices">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

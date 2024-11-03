@@ -21,7 +21,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Нове завдання"
+            android:hint="@string/newTask"
             android:textColorHint="#80FFFFFF"
             android:textColor="#FFFFFF"
             android:backgroundTint="#4DFFFFFF" />
@@ -30,7 +30,7 @@
             android:id="@+id/private_task_add_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Додати"
+            android:text="@string/add"
             android:backgroundTint="@color/accent"
             android:textColor="#FFFFFF" />
 
@@ -40,7 +40,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Список"
+        android:text="@string/list"
         android:textSize="24sp"
         android:textColor="@color/primary_text"
         android:textStyle="bold"
@@ -73,7 +73,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Виконати все"
+            android:text="@string/doAll"
             android:backgroundTint="@color/accent"
             android:textColor="#FFFFFF" />
 
@@ -82,7 +82,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Виконати"
+            android:text="@string/doTask"
             android:backgroundTint="@color/accent"
             android:textColor="#FFFFFF" />
 

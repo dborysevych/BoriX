@@ -1,3 +1,23 @@
 <resources>
-    <string name="app_name">ShareTextBetweenDevices</string>
+    <string name="family">BoriX</string>
+
+    <string name="myTasks">Мої завдання</string>
+    <string name="tasks">Завдання</string>
+    <string name="newTask">Нове завдання</string>
+    <string name="add">Додати</string>
+    <string name="list">Список</string>
+    <string name="doAll">Виконати все</string>
+    <string name="doTask">Виконати</string>
+
+    <string name="store">Магазин</string>
+    <string name="newProduct">Новий продукт</string>
+    <string name="buyAll">Купити все</string>
+    <string name="buy">Купити</string>
+
+    <string name="bank">Denxiik Bank</string>
+    <string name="returning">Віддати</string>
+    <string name="cuantity">Кількість</string>
+    <string name="get">Взяти</string>
+    <string name="history">Iсторія</string>
+    <string name="total">Всього</string>
 </resources>
