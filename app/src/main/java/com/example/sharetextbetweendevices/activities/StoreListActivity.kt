@@ -72,7 +72,6 @@ class StoreListActivity : ComponentActivity() {
                     val itemLayout = layoutInflater.inflate(R.layout.store_list_item, listView, false)
                     val textView = itemLayout.findViewById<TextView>(R.id.store_string_text)
                     val checkBox = itemLayout.findViewById<CheckBox>(R.id.store_delete_checkbox)
-
                     textView.text = string
 
                     checkBox.setOnCheckedChangeListener { _, isChecked ->

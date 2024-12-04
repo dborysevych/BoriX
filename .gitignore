@@ -15,6 +15,4 @@
 local.properties
 
 # Project exclude paths
-/gradle/
-app/google-services.json
 app/google-services.json
