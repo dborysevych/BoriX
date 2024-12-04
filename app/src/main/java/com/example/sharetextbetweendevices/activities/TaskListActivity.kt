@@ -11,7 +11,6 @@ import androidx.activity.ComponentActivity
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import com.example.sharetextbetweendevices.R
-import com.example.sharetextbetweendevices.family
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -31,10 +30,10 @@ class TaskListActivity: ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.task_list_activity)
+        setContentView(R.layout.list_activity)
 
         database = FirebaseDatabase.getInstance()
-        databaseReference = database.getReference("$family/task_list")
+        databaseReference = intent.getStringExtra("dbRef")?.let { database.getReference(it) }!!
 
         listView = findViewById(R.id.task_string_list)
         inputEditText = findViewById(R.id.task_input_edit_text)
@@ -67,7 +66,7 @@ class TaskListActivity: ComponentActivity() {
                     val string = snapshot.getValue(String::class.java) ?: ""
                     val key = snapshot.key ?: ""
 
-                    val itemLayout = layoutInflater.inflate(R.layout.task_list_item, listView, false)
+                    val itemLayout = layoutInflater.inflate(R.layout.list_item, listView, false)
                     val textView = itemLayout.findViewById<TextView>(R.id.task_string_text)
                     val checkBox = itemLayout.findViewById<CheckBox>(R.id.task_delete_checkbox)
 

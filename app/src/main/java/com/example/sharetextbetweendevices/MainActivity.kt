@@ -1,11 +1,11 @@
 package com.example.sharetextbetweendevices
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.cardview.widget.CardView
 import com.example.sharetextbetweendevices.activities.DenxiikBankActivity
-import com.example.sharetextbetweendevices.activities.PrivateTaskListActivity
 import com.example.sharetextbetweendevices.activities.StoreListActivity
 import com.example.sharetextbetweendevices.activities.TaskListActivity
 
@@ -19,7 +19,8 @@ class MainActivity : ComponentActivity() {
 
         val privateTaskListPreview = findViewById<CardView>(R.id.private_task_list_preview)
         privateTaskListPreview.setOnClickListener {
-            val intent = Intent(this, PrivateTaskListActivity::class.java)
+            val intent = Intent(this, TaskListActivity::class.java)
+            intent.putExtra("dbRef", "$family/${(Build.MODEL + Build.FINGERPRINT).replace("[^A-Za-z0-9]".toRegex(), "_")}/private_task_list")
             startActivity(intent)
         }
 
@@ -38,6 +39,22 @@ class MainActivity : ComponentActivity() {
         val taskListPreview = findViewById<CardView>(R.id.task_list_preview)
         taskListPreview.setOnClickListener {
             val intent = Intent(this, TaskListActivity::class.java)
+            intent.putExtra("dbRef", "$family/task_list")
+            startActivity(intent)
+        }
+
+        val goalsPreview = findViewById<CardView>(R.id.denxiik_goals_preview)
+        goalsPreview.setOnClickListener {
+            val intent = Intent(this, TaskListActivity::class.java)
+            intent.putExtra("dbRef", "$family/${(Build.MODEL + Build.FINGERPRINT).replace("[^A-Za-z0-9]".toRegex(), "_")}/goals_list")
+            startActivity(intent)
+
+        }
+
+        val ideasPreview = findViewById<CardView>(R.id.denxiik_ideas_preview)
+        ideasPreview.setOnClickListener {
+            val intent = Intent(this, TaskListActivity::class.java)
+            intent.putExtra("dbRef", "$family/${(Build.MODEL + Build.FINGERPRINT).replace("[^A-Za-z0-9]".toRegex(), "_")}/ideas_list")
             startActivity(intent)
         }
     }

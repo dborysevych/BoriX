@@ -20,4 +20,7 @@
     <string name="get">Взяти</string>
     <string name="history">Iсторія</string>
     <string name="total">Всього</string>
+
+    <string name="goals">Мої Цілі</string>
+    <string name="ideas">Мої Ідеї</string>
 </resources>
