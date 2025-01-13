@@ -41,6 +41,12 @@
         </activity>
 
         <activity
+            android:name=".activities.MyBankActivity"
+            android:exported="true"
+            android:theme="@style/Theme.ShareTextBetweenDevices">
+        </activity>
+
+        <activity
             android:name=".activities.TaskListActivity"
             android:exported="true"
             android:theme="@style/Theme.ShareTextBetweenDevices">

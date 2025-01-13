@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.cardview.widget.CardView
 import com.example.sharetextbetweendevices.activities.DenxiikBankActivity
+import com.example.sharetextbetweendevices.activities.MyBankActivity
 import com.example.sharetextbetweendevices.activities.StoreListActivity
 import com.example.sharetextbetweendevices.activities.TaskListActivity
 
@@ -55,6 +56,12 @@ class MainActivity : ComponentActivity() {
         ideasPreview.setOnClickListener {
             val intent = Intent(this, TaskListActivity::class.java)
             intent.putExtra("dbRef", "$family/${(Build.MODEL + Build.FINGERPRINT).replace("[^A-Za-z0-9]".toRegex(), "_")}/ideas_list")
+            startActivity(intent)
+        }
+
+        val myBankPreview = findViewById<CardView>(R.id.my_bank_preview)
+        myBankPreview.setOnClickListener {
+            val intent = Intent(this, MyBankActivity::class.java)
             startActivity(intent)
         }
     }

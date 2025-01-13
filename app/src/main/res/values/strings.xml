@@ -23,4 +23,8 @@
 
     <string name="goals">Мої Цілі</string>
     <string name="ideas">Мої Ідеї</string>
+    <string name="my_bank">Мій банк</string>
+    <string name="info">Інфо</string>
+    <string name="rest">Відняти</string>
+    <string name="borrowed">Борг</string>
 </resources>
