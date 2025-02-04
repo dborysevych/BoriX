@@ -97,7 +97,7 @@ class MyBankActivity : ComponentActivity() {
                     val info = snapshot.child("info").getValue(String::class.java) ?: "N/A"
                     val dateAdded = snapshot.child("date").getValue(String::class.java) ?: "N/A"
 
-                    val itemLayout = layoutInflater.inflate(R.layout.my_bank_list_item, listView, false)
+                    val itemLayout = layoutInflater.inflate(R.layout.bank_list_item, listView, false)
                     val textViewValue = itemLayout.findViewById<TextView>(R.id.bank_string_amount)
                     val textViewInfo = itemLayout.findViewById<TextView>(R.id.bank_string_info)
                     val textViewDate = itemLayout.findViewById<TextView>(R.id.bank_string_date)
