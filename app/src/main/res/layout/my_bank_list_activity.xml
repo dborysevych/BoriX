@@ -97,8 +97,7 @@
             android:id="@+id/bank_string_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="16dp">
+            android:orientation="vertical">
         </LinearLayout>
     </ScrollView>
 
